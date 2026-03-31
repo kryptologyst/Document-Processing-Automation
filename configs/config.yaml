@@ -1,0 +1,247 @@
+# Main configuration file for Document Processing Automation
+
+# System settings
+system:
+  name: "Document Processing Automation"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+  random_seed: 42
+
+# Document processing settings
+processing:
+  confidence_threshold: 0.7
+  human_review_threshold: 0.5
+  max_processing_time: 30.0
+  batch_size: 100
+  parallel_workers: 4
+  
+  # Field extraction settings
+  field_extraction:
+    min_confidence: 0.6
+    max_retries: 3
+    timeout: 10.0
+    
+  # Document classification settings
+  classification:
+    model_type: "random_forest"
+    max_features: 1000
+    confidence_threshold: 0.8
+
+# OCR settings
+ocr:
+  enabled: true
+  tesseract_path: "/usr/bin/tesseract"
+  language: "eng"
+  config: "--psm 6"
+  preprocessing:
+    denoise: true
+    threshold: true
+    morphology: true
+
+# NLP settings
+nlp:
+  spacy_model: "en_core_web_sm"
+  use_ner: true
+  use_sentiment: false
+  max_text_length: 10000
+  
+  # Text preprocessing
+  preprocessing:
+    lowercase: true
+    remove_punctuation: false
+    remove_stopwords: false
+    lemmatize: false
+
+# Data settings
+data:
+  input_dir: "data/input"
+  output_dir: "data/output"
+  cache_dir: "data/cache"
+  temp_dir: "data/temp"
+  
+  # File formats
+  supported_formats:
+    - "txt"
+    - "pdf"
+    - "docx"
+    - "png"
+    - "jpg"
+    - "jpeg"
+  
+  # Data validation
+  validation:
+    max_file_size: 10485760  # 10MB
+    min_text_length: 10
+    max_text_length: 100000
+
+# Model settings
+models:
+  model_dir: "models"
+  save_models: true
+  load_pretrained: false
+  
+  # Document classifier
+  classifier:
+    type: "random_forest"
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+    
+  # Field extractor
+  field_extractor:
+    use_ml: true
+    use_ner: true
+    confidence_threshold: 0.7
+    
+  # Confidence estimator
+  confidence_estimator:
+    anomaly_threshold: 0.1
+    factor_weights:
+      pattern_match_quality: 0.3
+      field_completeness: 0.2
+      consistency_check: 0.2
+      anomaly_score: 0.15
+      context_relevance: 0.15
+
+# Evaluation settings
+evaluation:
+  output_dir: "results"
+  save_detailed_results: true
+  generate_reports: true
+  
+  # Metrics
+  metrics:
+    classification: true
+    field_extraction: true
+    confidence_calibration: true
+    processing_performance: true
+    
+  # Benchmarking
+  benchmark:
+    test_sizes: [10, 50, 100, 500]
+    stress_test_documents: 1000
+    concurrent_threads: 4
+
+# Visualization settings
+visualization:
+  output_dir: "assets/visualizations"
+  format: "html"
+  width: 1200
+  height: 800
+  
+  # Charts
+  charts:
+    confidence_distribution: true
+    field_accuracy: true
+    processing_performance: true
+    error_analysis: true
+    confidence_calibration: true
+
+# Dashboard settings
+dashboard:
+  output_dir: "assets/dashboards"
+  template: "default"
+  include_charts: true
+  include_tables: true
+  include_recommendations: true
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/document_processing.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+  
+  # Loggers
+  loggers:
+    document_processor: "INFO"
+    field_extractor: "INFO"
+    confidence_estimator: "INFO"
+    evaluator: "INFO"
+    visualizer: "INFO"
+
+# Security settings
+security:
+  enable_encryption: false
+  encryption_key: null
+  hash_sensitive_data: false
+  audit_logging: true
+  
+  # Data protection
+  data_protection:
+    anonymize_pii: false
+    retention_days: 30
+    secure_deletion: false
+
+# Performance settings
+performance:
+  cache_enabled: true
+  cache_size: 1000
+  cache_ttl: 3600  # 1 hour
+  
+  # Memory management
+  memory:
+    max_memory_usage: 0.8
+    gc_threshold: 1000
+    
+  # Processing optimization
+  optimization:
+    use_multiprocessing: true
+    chunk_size: 100
+    prefetch_size: 10
+
+# API settings (if applicable)
+api:
+  enabled: false
+  host: "localhost"
+  port: 8000
+  workers: 4
+  timeout: 30
+  
+  # Authentication
+  auth:
+    enabled: false
+    token_expiry: 3600
+    
+  # Rate limiting
+  rate_limit:
+    enabled: false
+    requests_per_minute: 100
+
+# Monitoring settings
+monitoring:
+  enabled: false
+  metrics_endpoint: "/metrics"
+  health_check_endpoint: "/health"
+  
+  # Performance monitoring
+  performance:
+    track_processing_time: true
+    track_memory_usage: true
+    track_accuracy: true
+    
+  # Error tracking
+  error_tracking:
+    enabled: false
+    max_errors: 1000
+    error_threshold: 0.1
+
+# Development settings
+development:
+  debug_mode: false
+  verbose_logging: false
+  profile_performance: false
+  
+  # Testing
+  testing:
+    generate_test_data: true
+    test_data_size: 100
+    run_integration_tests: false
+    
+  # Development tools
+  tools:
+    enable_profiling: false
+    enable_debugging: false
+    enable_tracing: false
